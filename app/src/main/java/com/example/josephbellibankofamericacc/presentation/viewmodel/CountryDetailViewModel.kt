@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,12 +22,15 @@ class CountryDetailViewModel @Inject constructor(
         MutableStateFlow(
             UiState.LOADING
         )
-    val countryDetails: StateFlow<UiState<CountryDetailDomainModel>> get() = _countryDetails.asStateFlow()
+    val countryDetails: StateFlow<UiState<CountryDetailDomainModel>> get() =
+        _countryDetails.asStateFlow()
 
     fun getCountryDetails(countryCode: String) {
         viewModelScope.launch {
             getCountryDetailUseCase.invoke(code = countryCode).collect { state ->
-                _countryDetails.value = state
+                _countryDetails.update {
+                    state
+                }
             }
         }
     }

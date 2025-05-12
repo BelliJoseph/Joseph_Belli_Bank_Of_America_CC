@@ -43,41 +43,46 @@ class CountryDetailViewModelTest {
     }
 
     @Test
-    fun `getCountryDetailUseCase updates countryDetails state flow with data from useCase`() = runTest {
-        //Arrange
-        val flow = flowOf(
-            UiState.SUCCESS(countryDetailDomainModelTest)
-        )
+    fun `getCountryDetailUseCase updates countryDetails state flow with data from useCase`() =
+        runTest {
+            //Arrange
+            val flow = flowOf(
+                UiState.SUCCESS(countryDetailDomainModelTest)
+            )
 
-        coEvery { getCountryDetailUseCase.invoke("US") } returns flow
+            coEvery { getCountryDetailUseCase.invoke("US") } returns flow
 
-        //Act
-        countryDetailViewModel.getCountryDetails("US")
-        countryDetailViewModel.countryDetails.drop(1).first()
+            //Act
+            countryDetailViewModel.getCountryDetails("US")
+            countryDetailViewModel.countryDetails.drop(1).first()
 
-        //Assert
-        assertEquals(countryDetailViewModel.countryDetails.value, UiState.SUCCESS(countryDetailDomainModelTest))
-        coVerify(exactly = 1) { getCountryDetailUseCase.invoke("US") }
-    }
+            //Assert
+            assertEquals(
+                countryDetailViewModel.countryDetails.value,
+                UiState.SUCCESS(countryDetailDomainModelTest)
+            )
+            coVerify(exactly = 1) { getCountryDetailUseCase.invoke("US") }
+        }
 
     @Test
-    fun `getCountryDetailUseCase updates countryDetails state flow with error from useCase`() = runTest {
-        //Arrange
-        val exception = NullResponse("No Country Found with that Code")
+    fun `getCountryDetailUseCase updates countryDetails state flow with error from useCase`() =
+        runTest {
+            //Arrange
+            val exception = NullResponse("No Country Found with that Code")
 
-        val flow = flowOf(
-            UiState.ERROR(exception)
-        )
+            val flow = flowOf(
+                UiState.ERROR(exception)
+            )
 
-        coEvery { getCountryDetailUseCase.invoke("US") } returns flow
+            coEvery { getCountryDetailUseCase.invoke("US") } returns flow
 
-        //Act
-        countryDetailViewModel.getCountryDetails("US")
-        countryDetailViewModel.countryDetails.drop(1).first()
+            //Act
+            countryDetailViewModel.getCountryDetails("US")
+            countryDetailViewModel.countryDetails.drop(1).first()
 
-        //Assert
-        assertEquals(countryDetailViewModel.countryDetails.value, UiState.ERROR(exception))
-        coVerify(exactly = 1) { getCountryDetailUseCase.invoke("US") }
-    }
+            //Assert
+            assertEquals(countryDetailViewModel.countryDetails.value, UiState.ERROR(exception))
+            coVerify(exactly = 1) { getCountryDetailUseCase.invoke("US") }
+        }
 
 }

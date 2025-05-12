@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/CountryListFragment"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/CountryListFragment"
+        android:label="List"
+        tools:layout="@layout/fragment_country_list"
+        android:name="com.example.josephbellibankofamericacc.presentation.views.CountryListFragment">
+        <action
+            android:id="@+id/action_listFragment_to_detailFragment"
+            app:destination="@id/CountryDetailsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/CountryDetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_country_details"
+        android:name="com.example.josephbellibankofamericacc.presentation.views.CountryDetailsFragment">
+        <action
+            android:id="@+id/action_detailFragment_to_listFragment"
+            app:destination="@+id/CountryListFragment" />
+        <argument
+            android:name="countryId"
+            app:argType="string" />
+
+    </fragment>
+
+</navigation>

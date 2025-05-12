@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Joseph Belli Bank Of America CC</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello From Details Fragment</string>
+
+    <string name="country_list_title">World Country List</string>
+    <string name="country_list_click_message">Click a card in the list to see more details</string>
+
+    <string name="error_dialog_title">An Error Occurred!</string>
+    <string name="error_positive_button_text">RETRY</string>
+    <string name="error_negative_button_text">DISMISS</string>
+    <string name="error_default_message">An Unknown Error Occurred!</string>
+
+    <string name="country_name_label">Name:</string>
+    <string name="country_region_label">Region:</string>
+    <string name="country_code_label">Code:</string>
+    <string name="country_capital_label">Capital:</string>
+
+    <string name="country_currency_name_label">Currency Name:</string>
+    <string name="country_currency_symbol_label">Currency Symbol:</string>
+    <string name="country_language_label">Language:</string>
+
+    <string name="country_flag_image_description">Country Flag Image</string>
+
+    <string name="country_currency_empty_default">No Symbol Available</string>
+</resources>

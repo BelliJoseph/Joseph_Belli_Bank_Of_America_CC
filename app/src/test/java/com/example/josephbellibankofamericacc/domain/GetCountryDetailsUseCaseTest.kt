@@ -2,7 +2,7 @@ package com.example.josephbellibankofamericacc.domain
 
 import com.example.josephbellibankofamericacc.data.util.UiState
 import com.example.josephbellibankofamericacc.data.util.toDomainDetail
-import com.example.josephbellibankofamericacc.testData.singleCountryEntity
+import com.example.josephbellibankofamericacc.testData.singleCountryEntityTest
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -45,7 +45,7 @@ class GetCountryDetailsUseCaseTest {
     @Test
     fun `invoke emits LOADING state first`() = runTest {
         //Arrange
-        coEvery { repository.getLocalCountryDetail("US") } returns singleCountryEntity
+        coEvery { repository.getLocalCountryDetail("US") } returns singleCountryEntityTest
 
         //Act
         val flow = getCountryDetailUseCase.invoke(code = "US")
@@ -59,7 +59,7 @@ class GetCountryDetailsUseCaseTest {
     @Test
     fun `invoke emits SUCCESS state when entity present in DB`() = runTest {
         //Arrange
-        coEvery { repository.getLocalCountryDetail("US") } returns singleCountryEntity
+        coEvery { repository.getLocalCountryDetail("US") } returns singleCountryEntityTest
 
         //Act
         val flow = getCountryDetailUseCase.invoke("US")
@@ -67,7 +67,7 @@ class GetCountryDetailsUseCaseTest {
 
         //Assert
         assert(emission[0] is UiState.LOADING)
-        assertEquals(emission[1], UiState.SUCCESS(singleCountryEntity.toDomainDetail()))
+        assertEquals(emission[1], UiState.SUCCESS(singleCountryEntityTest.toDomainDetail()))
         coVerify(exactly = 1) { repository.getLocalCountryDetail("US") }
     }
 

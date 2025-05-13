@@ -18,6 +18,6 @@ interface CountriesDao {
     @Query("SELECT * FROM country_table WHERE code LIKE :countryCode")
     suspend fun getCountry(
         countryCode: String,
-    ): CountryEntity
+    ): CountryEntity?
 
 }

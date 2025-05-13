@@ -4,7 +4,7 @@ import com.example.josephbellibankofamericacc.data.network.CountryNetworkModel
 import com.example.josephbellibankofamericacc.data.util.UiState
 import com.example.josephbellibankofamericacc.data.util.toDomainList
 import com.example.josephbellibankofamericacc.data.util.toEntityList
-import com.example.josephbellibankofamericacc.testData.countryEntityList
+import com.example.josephbellibankofamericacc.testData.countryEntityListTest
 import com.example.josephbellibankofamericacc.testData.countryNetworkListTest
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -51,7 +51,7 @@ class GetCountriesListUseCaseTest {
     @Test
     fun `invoke emits LOADING state first`() = runTest {
         //Arrange
-        coEvery { repository.getLocalCountryList() } returns countryEntityList
+        coEvery { repository.getLocalCountryList() } returns countryEntityListTest
 
         //Act
         val flow = getCountriesListUseCase.invoke()
@@ -64,7 +64,7 @@ class GetCountriesListUseCaseTest {
     @Test
     fun `invoke SUCCESS when data present in DB`() = runTest {
         //Arrange
-        coEvery { repository.getLocalCountryList() } returns countryEntityList
+        coEvery { repository.getLocalCountryList() } returns countryEntityListTest
 
         //Act
         val flow = getCountriesListUseCase.invoke()
@@ -72,7 +72,7 @@ class GetCountriesListUseCaseTest {
 
         //Assert
         assert(emission[0] is UiState.LOADING)
-        assertEquals(emission[1], UiState.SUCCESS(countryEntityList.toDomainList()))
+        assertEquals(emission[1], UiState.SUCCESS(countryEntityListTest.toDomainList()))
         coVerify(exactly = 1) { repository.getLocalCountryList() }
         coVerify(exactly = 0) { repository.getNetworkCountries() }
     }

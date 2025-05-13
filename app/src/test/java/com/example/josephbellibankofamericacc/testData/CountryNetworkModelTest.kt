@@ -15,9 +15,7 @@ val countryNetworkListTest = listOf(
         ),
         language = Language(
             code = "uk",
-            iso6392 = "",
             name = "Ukrainian",
-            nativeName = ""
         ),
         name = "Ukraine",
         region = "EU"
@@ -32,9 +30,7 @@ val countryNetworkListTest = listOf(
         ),
         language = Language(
             code = "en",
-            iso6392 = "",
             name = "English",
-            nativeName = ""
         ),
         name = "United Kingdom of Great Britain and Northern Ireland",
         region = "EU"
@@ -49,9 +45,7 @@ val countryNetworkListTest = listOf(
         ),
         language = Language(
             code = "en",
-            iso6392 = "eng",
             name = "English",
-            nativeName = "English"
         ),
         name = "United States of America",
         region = "NA"

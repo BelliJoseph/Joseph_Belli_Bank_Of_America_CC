@@ -2,7 +2,7 @@ package com.example.josephbellibankofamericacc.testData
 
 import com.example.josephbellibankofamericacc.data.entity.CountryEntity
 
-val singleCountryEntity = CountryEntity(
+val singleCountryEntityTest = CountryEntity(
     code = "US",
     capital = "Washington, D.C.",
     name = "United States of America",
@@ -12,7 +12,7 @@ val singleCountryEntity = CountryEntity(
     languageName = "English"
 )
 
-val countryEntityList = listOf(
+val countryEntityListTest = listOf(
     CountryEntity(
         code = "AE",
         capital = "Abu Dhabi",
